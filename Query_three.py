@@ -10,7 +10,7 @@ db = client['pokemon']
 collection = db['pokemon_data']
 
 # Using the $in operator to check if the "abilities" field contains value "Overgrow" in its list
-query = {"abilities": {"$regex": ".*Overgrow.*"}}
+query = {"abilities": {"$in": ["Overgrow"]}}
 pokemon_with_overgrow = collection.find(query)
 
 
