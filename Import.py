@@ -11,14 +11,14 @@ documents = df.to_dict(orient='records')
 # print(documents)
 
 # Connect to MongoDB
-client = MongoClient('mongodb://localhost/pokemon')
-db = client['pokemon']
-collection = db['pokemon_data']
+mongoClient = MongoClient("mongodb://localhost/pokemon")
+pokemonDB = mongoClient['pokemondb']
+pokemonColl = pokemonDB['pokemon_data']
 
 # Insert the documents into the collection with error handling
 for i, doc in enumerate(documents):
     print(f"Inserting document {i+1}/{len(documents)}")
-    collection.insert_one(doc)
+    pokemonColl.insert_one(doc)
 
 
 print(f"Inserted {len(documents)} documents")
