@@ -7,7 +7,7 @@ client = MongoClient('mongodb://localhost:27017/')
 db = client['pokemon']
 
 # Specify the collection
-collection = db['pokemon_data']
+collection = db['pokemons']
 
 # Using the $regex operator to find match documents where the "abilities" field has the substring "Overgrow"
 query = {"abilities": {"$regex": ".*Overgrow.*"}}
