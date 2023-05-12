@@ -1,16 +1,16 @@
 from pymongo import MongoClient
 
 # Connect to MongoDB
-client = MongoClient('mongodb://localhost:27017/')
+mongoClient = MongoClient("mongodb://localhost/pokemon")
 
 # Specify the database
-db = client['pokemon']
+pokemonDB = mongoClient['pokemondb']
 
 # Specify the collection
-collection = db['pokemons']
+pokemonColl = pokemonDB['pokemon_data']
 
 # Fetch all Pokémon documents
-pokemons = collection.find()
+pokemons = pokemonColl.find()
 
 # Iterate over the documents
 for pokemon in pokemons:
@@ -30,6 +30,6 @@ for pokemon in pokemons:
     }
     
     # Insert the new document into the "pokemon_data" collection
-    db['pokemon_data'].insert_one(pokemon_data)
+    pokemonDB['pokemon_data'].insert_one(pokemon_data)
 
 print("The Data transformation is complete! Yay!")
