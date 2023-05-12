@@ -9,7 +9,7 @@ db = client['pokemon']
 # Specify the collection
 collection = db['pokemon_data']
 
-# using "@gt" which is the MongoDb greater than
+# using "$gt" which is the MongoDb greater than
 query = {"attack": {"$gt": 150}}
 pokemon_with_attack = collection.find(query)
 
