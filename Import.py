@@ -1,11 +1,29 @@
 import pandas as pd
->>> df = pd.read_csv('pokemon.csv')
->>> documents = df.to_dict(orient='records')
->>> from pymongo import MongoClient
->>> client = MongoClient('mongodb://localhost:27017/')
->>> db = client['pokemon']
->>> collection = db['pokemons']
->>> collection.insert_many(documents)
+from pymongo import MongoClient
+
+# Read data from the CSV file
+df = pd.read_csv('pokemon.csv')
+# print(df)
+
+
+# Convert DataFrame to a list of dictionaries
+documents = df.to_dict(orient='records')
+# print(documents)
+
+# Connect to MongoDB
+client = MongoClient('mongodb://localhost/pokemon')
+db = client['pokemon']
+collection = db['pokemon_data']
+
+# Insert the documents into the collection with error handling
+for i, doc in enumerate(documents):
+    print(f"Inserting document {i+1}/{len(documents)}")
+    collection.insert_one(doc)
+
+
+print(f"Inserted {len(documents)} documents")
+
+print("Data insertion complete!")
 
 use pokemon
 switched to db pokemon
