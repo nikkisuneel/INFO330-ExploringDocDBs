@@ -7,7 +7,7 @@ client = MongoClient('mongodb://localhost:27017/')
 db = client['pokemon']
 
 # Specify the collection
-collection = db['pokemon_data']
+collection = db['pokemons']
 
 
 query = {"name": "Pikachu"}
